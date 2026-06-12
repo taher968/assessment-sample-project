@@ -19,10 +19,14 @@ jobs:
                 go mod tidy
                 go mod download
 
-            - name: Run Gosec Security Scanner
-              uses: securego/gosec@master
-              with:
-                args: './...'
+            # - name: Run Gosec Security Scanner
+            #   uses: securego/gosec@master
+            #   with:
+            #     args: './...'
+            
+            - name: go vulnerability checker
+              uses: golang/govulncheck-action@v1
+
     ci:
         runs-on: ubuntu-latest
         steps:
