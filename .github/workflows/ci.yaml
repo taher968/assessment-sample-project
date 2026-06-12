@@ -24,10 +24,12 @@ jobs:
             #   with:
             #     args: './...'
             
-            - name: go vulnerability checker
+            - name: Run govulncheck
+              id: govulncheck
               uses: golang/govulncheck-action@v1
               with:
-                go-package: ./...
+                go-version-input: '1.26.x'
+                go-package: './...'
 
     ci:
         runs-on: ubuntu-latest
