@@ -1,0 +1,24 @@
+name: CI Pipeline
+run-name: ci-pipeline
+
+on:
+  push:
+    branches: 
+  pull_request:
+    branches: [main]
+
+jobs:
+    dependencies:
+        - uses: actions/checkout@v6
+        - run: |
+            go mod tidy
+            go mod download
+
+
+    build:
+        needs: dependencies
+        - run: go build -v ./...
+
+    test:
+        needs: dependencies build
+        - run: go test ./...
