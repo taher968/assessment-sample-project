@@ -19,11 +19,10 @@ jobs:
                 go mod tidy
                 go mod download
 
-            - name: Install gosec
-              run: go install github.com/securego/gosec/v2/cmd/gosec@v2.27.1
-
-            - name: Run gosec
-              run: gosec ./...
+            - name: Run Gosec Security Scanner
+              uses: securego/gosec@master
+              with:
+                args: './...'
     ci:
         runs-on: ubuntu-latest
         steps:
