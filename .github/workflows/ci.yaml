@@ -8,23 +8,19 @@ on:
     branches: [main]
 
 jobs:
-    dependencies:
+    ci:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v6
-            - run: |
+            - name: Checkout code
+              uses: actions/checkout@v6
+
+            - name: Install dependencies
+             run: |
                 go mod tidy
                 go mod download
 
+            - name: Build
+              run: go build -v ./...
 
-    build:
-        runs-on: ubuntu-latest
-        needs: dependencies
-        steps:
-            - run: go build -v ./...
-
-    test:
-        runs-on: ubuntu-latest
-        needs: build
-        steps:
-            - run: go test ./...
+            - name: Run tests
+              run: go test ./...
