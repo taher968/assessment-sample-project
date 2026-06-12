@@ -26,6 +26,8 @@ jobs:
             
             - name: go vulnerability checker
               uses: golang/govulncheck-action@v1
+              with:
+                go-package: ./...
 
     ci:
         runs-on: ubuntu-latest
