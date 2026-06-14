@@ -7,3 +7,14 @@
 
 - Language of choice: Go
 
+
+## CI pipeline
+
+- Workflow file
+- Install dependencies
+- Run all the tests
+- Run on every push and on every pull request targeting the main branch
+
+- Software Composition Analysis
+
+
